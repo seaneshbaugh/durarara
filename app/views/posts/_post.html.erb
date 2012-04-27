@@ -1,0 +1,16 @@
+<article id="post-<%= post.id %>" class="post">
+  <header>
+    <h1 class="subject">
+      <%= post.subject %>
+    </h1>
+    <div class="name">
+      <%= post.name %>
+    </div>
+    <div class="identicon">
+      <%= image_tag(image_path(post.identicon)) %>
+    </div>
+  </header>
+  <div class="body">
+    <%= post.body %>
+  </div
+</article>

@@ -6,6 +6,7 @@
 .redcar/
 .idea/
 /public/uploads/
+/public/images/identicon/
 /public/images/icons/
 /public/images/notifications/
 /app/assets/images/icons/

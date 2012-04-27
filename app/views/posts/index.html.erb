@@ -1,29 +1,6 @@
-<h1>Listing posts</h1>
-
-<table>
-  <tr>
-    <th>Subject</th>
-    <th>Body</th>
-    <th>Ip address</th>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @posts.each do |post| %>
-  <tr>
-    <td><%= post.subject %></td>
-    <td><%= post.body %></td>
-    <td><%= post.ip_address %></td>
-    <td><%= post.name %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Post', new_post_path %>
+<%= render "form" %>
+<div id="posts" data-latest-post-id="<%= @posts.first.id if @posts.length > 0 %>">
+  <% @posts.each do |post| %>
+    <%= render "post", :post => post %>
+  <% end %>
+</div>
