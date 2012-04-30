@@ -1,9 +1,26 @@
-// Place all the styles related to the Posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 .post {
-	.name {
-		display: none;
+	margin: 0 0 20px 0;
+	overflow: hidden;
+	header {
+		.subject {
+			margin: 0 0 2px 0;
+		}
+		.time {
+			font-size: 10px;
+			font-style: italic;
+			margin: 0 0 10px 0;
+		}
+		.name {
+			display: none;
+		}
+		.identicon {
+			float: left;
+			height: 100px;
+			margin: 0 10px 0 0;
+			width: 100px;
+		}
+	}
+	.body {
+		margin: 0 0 0 110px;
 	}
 }

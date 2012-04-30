@@ -4,6 +4,17 @@ class PostsController < ApplicationController
     @posts = Post.order("created_at DESC")
 
     @post = Post.new
+
+    respond_to do |format|
+      format.html {}
+      format.js {
+        @latest_post = Post.find_by_id(params[:latest_post_id])
+
+        unless @latest_post.nil?
+          @new_posts = Post.all(:conditions => ["id > ?", @latest_post.id], :order => "id DESC")
+        end
+      }
+    end
   end
 
   # GET /posts/1
@@ -22,10 +33,22 @@ class PostsController < ApplicationController
 
     @post.ip_address = request.remote_ip
 
-    if @post.save
-      redirect_to posts_url, notice: "Post was successfully created."
-    else
-      render action: "new"
+    respond_to do |format|
+      if @post.save
+        format.html { redirect_to posts_url, notice: "Post was successfully created." }
+        format.js {
+          @latest_post = Post.find_by_id(params[:latest_post_id])
+
+          unless @latest_post.nil?
+            @new_posts = Post.all(:conditions => ["id > ?", @latest_post.id], :order => "id DESC")
+          end
+
+          render "index", notice: "Post was successfully created."
+        }
+      else
+        format.html { render action: "new" }
+        format.js { render "index" }
+      end
     end
   end
 

@@ -1,16 +1,19 @@
 <article id="post-<%= post.id %>" class="post">
   <header>
+    <div class="identicon">
+      <%= image_tag(image_path(post.identicon)) %>
+    </div>
     <h1 class="subject">
       <%= post.subject %>
     </h1>
+    <div class="time">
+      Posted on <%= post.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+    </div>
     <div class="name">
       <%= post.name %>
-    </div>
-    <div class="identicon">
-      <%= image_tag(image_path(post.identicon)) %>
     </div>
   </header>
   <div class="body">
     <%= post.body %>
-  </div
+  </div>
 </article>

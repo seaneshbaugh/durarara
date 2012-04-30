@@ -13,14 +13,35 @@ body {
 	font-size: 16px;
 }
 
+.field, .actions {
+	margin: 0 0 10px 0;
+}
+
 input[type="text"], textarea {
 	color: #444444;
 	font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
 	font-size: 14px;
 }
 
+textarea {
+	height: 100px;
+	width: 100%;
+}
+
 #container {
-	margin: 0 auto;
+	margin: 0 auto 30px auto;
 	max-width: 1000px;
 	width: 90%;
+}
+
+#notice-container {
+	height: 30px;
+	width: 100%;
+}
+
+#notice {
+	display: none;
+	font-size: 18px;
+	height: 30px;
+	line-height: 30px;
 }
