@@ -16,10 +16,15 @@ class Post < ActiveRecord::Base
   validates :subject,
     :presence => true
 
-  before_validation :set_name
+  before_validation :set_name, :sanitize
 
   def set_name
     self.name = Digest::SHA2.hexdigest(self.ip_address)
+  end
+
+  def sanitize
+    self.subject = Sanitize.clean(self.subject).strip
+    self.body = Sanitize.clean(self.body, :elements => %w[br]).strip
   end
 
   def identicon

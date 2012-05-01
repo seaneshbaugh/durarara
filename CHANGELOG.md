@@ -1,3 +1,7 @@
+## v0.2.2
+
+* Posts are now sanitized.
+
 ## v0.2.1
 
 * Minor bug fixes.

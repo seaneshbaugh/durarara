@@ -29,4 +29,5 @@ end
 gem 'jquery-rails'
 # gem 'devise'
 gem 'rmagick'
-gem 'kaminari'
+# gem 'kaminari'
+gem 'sanitize'

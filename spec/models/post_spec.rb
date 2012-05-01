@@ -8,8 +8,8 @@ describe Post do
   end
 
   it "escapes HTML in the subject before saving" do
-    post = FactoryGirl.create(:post, :subject => "<p>This is some<strong>HTML</strong>.</p>")
+    post = FactoryGirl.create(:post, :subject => "<p>This is some <strong>HTML</strong>.</p>")
 
-    post.subject.should eq("&lt;p&gt;This is some&lt;strong&gt;HTML&lt;/strong&gt;.&lt;/p&gt;")
+    post.subject.should eq("This is some HTML.")
   end
 end
