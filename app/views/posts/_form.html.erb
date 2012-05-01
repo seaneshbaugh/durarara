@@ -9,7 +9,7 @@
       </ul>
     </div>
   <% end %>
-  <%= hidden_field_tag :latest_post_id, (@posts.first.id if @posts.length > 0) %>
+  <%= hidden_field_tag :latest_post_id, (@posts.first.id if !@posts.nil? && @posts.length > 0) %>
   <div class="field">
     <%= f.label :subject %><br />
     <%= f.text_field :subject %>

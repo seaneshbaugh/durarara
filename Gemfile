@@ -27,6 +27,6 @@ group :development, :test do
 end
 
 gem 'jquery-rails'
-gem 'devise'
+# gem 'devise'
 gem 'rmagick'
 gem 'kaminari'

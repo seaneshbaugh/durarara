@@ -2,20 +2,18 @@ require 'spec_helper'
 
 describe "posts/show" do
   before(:each) do
-    @post = assign(:post, stub_model(Post,
-      :subject => "Subject",
-      :body => "MyText",
-      :ip_address => "Ip Address",
-      :name => "Name"
-    ))
+    @post = assign(:post, FactoryGirl.create(:post))
   end
 
-  it "renders attributes in <p>" do
+  it "shows the contents of a post" do
     render
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    rendered.should match(/Subject/)
-    rendered.should match(/MyText/)
-    rendered.should match(/Ip Address/)
-    rendered.should match(/Name/)
+
+    assert_select "article#post-#{@post.id}"
+    assert_select "article.post"
+    assert_select "div.identicon"
+    assert_select "h1.subject"
+    assert_select "div.time"
+    assert_select "div.name"
+    assert_select "div.body"
   end
 end

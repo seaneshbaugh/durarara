@@ -12,4 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require sugar-1.2.4.min.js
 //= require_tree .

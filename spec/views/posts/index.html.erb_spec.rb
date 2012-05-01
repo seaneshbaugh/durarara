@@ -2,28 +2,19 @@ require 'spec_helper'
 
 describe "posts/index" do
   before(:each) do
-    assign(:posts, [
-      stub_model(Post,
-        :subject => "Subject",
-        :body => "MyText",
-        :ip_address => "Ip Address",
-        :name => "Name"
-      ),
-      stub_model(Post,
-        :subject => "Subject",
-        :body => "MyText",
-        :ip_address => "Ip Address",
-        :name => "Name"
-      )
-    ])
+    assign(:posts, [FactoryGirl.create(:post, :subject => "First Post", :body => "This is the first test post."),
+                   FactoryGirl.create(:post, :subject => "Second Post", :body => "This is the second test post.")])
+    assign(:post, Post.new)
   end
 
   it "renders a list of posts" do
     render
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "tr>td", :text => "Subject".to_s, :count => 2
-    assert_select "tr>td", :text => "MyText".to_s, :count => 2
-    assert_select "tr>td", :text => "Ip Address".to_s, :count => 2
-    assert_select "tr>td", :text => "Name".to_s, :count => 2
+
+    assert_select "article.post", :count => 2
+    assert_select "div.identicon", :count => 2
+    assert_select "h1.subject", :count => 2
+    assert_select "div.time", :count => 2
+    assert_select "div.name", :count => 2
+    assert_select "div.body", :count => 2
   end
 end

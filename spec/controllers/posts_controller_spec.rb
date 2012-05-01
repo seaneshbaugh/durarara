@@ -24,9 +24,9 @@ describe PostsController do
   # Post. As you add validations to Post, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    { :subject => "Test Post", :body => "This is a test!", :ip_address => "127.0.0.1" }
   end
-  
+
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # PostsController. Be sure to keep this updated too.
@@ -79,9 +79,9 @@ describe PostsController do
         assigns(:post).should be_persisted
       end
 
-      it "redirects to the created post" do
+      it "redirects to the post index" do
         post :create, {:post => valid_attributes}, valid_session
-        response.should redirect_to(Post.last)
+        response.should redirect_to(posts_path)
       end
     end
 
