@@ -13,3 +13,5 @@
 /app/assets/images/notifications/
 .sass-cache/
 /vendor/bundle
+.DS_Store
+._*

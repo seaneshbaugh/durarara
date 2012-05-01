@@ -37,11 +37,10 @@ textarea {
 #notice-container {
 	height: 30px;
 	width: 100%;
-}
-
-#notice {
-	display: none;
-	font-size: 18px;
-	height: 30px;
-	line-height: 30px;
+	#notice {
+		display: none;
+		font-size: 18px;
+		height: 30px;
+		line-height: 30px;
+	}
 }

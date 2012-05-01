@@ -14,10 +14,10 @@ $(function() {
 	$("#new_post").on("submit", function(event) {
 		event.preventDefault();
 
-		if ($("#post_subject").val() === "") {
+		if ($("#post_subject").val().isBlank()) {
 			$("#notice").text("You cannot post without a subject!").fadeIn(500).fadeOut(8000);
 		} else {
-			if ($("#post_body").val() === "") {
+			if ($("#post_body").val().isBlank()) {
 				$("#notice").text("You cannot post without a body!").fadeIn(500).fadeOut(8000);
 			} else {
 				$.post($(this).attr("action"), $(this).serialize(), function(data, textStatus, jqXHR) {
