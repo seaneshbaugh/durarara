@@ -12,4 +12,10 @@ describe Post do
 
     post.subject.should eq("This is some HTML.")
   end
+
+  it "replaces newlines with br tags before saving" do
+    post = FactoryGirl.create(:post, :body => "This\nis\na\ntest.")
+
+    post.body.should eq("This&lt;br /&gt;is&lt;br /&gt;a&lt;br /&gt;test.")
+  end
 end

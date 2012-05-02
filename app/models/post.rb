@@ -1,3 +1,4 @@
+require "sanitize"
 require "digest/sha2"
 require "ridenticon"
 
@@ -23,8 +24,8 @@ class Post < ActiveRecord::Base
   end
 
   def sanitize
-    self.subject = Sanitize.clean(self.subject).strip
-    self.body = Sanitize.clean(self.body, :elements => %w[br]).strip
+    self.subject = Sanitize.clean(self.subject).split(/[^\S\n]/).reject{ |s| s == "" }.join(" ")
+    self.body = Sanitize.clean(self.body).split(/[^\S\n]/).reject{ |s| s == "" }.join(" ").gsub("\n", "&lt;br /&gt;")
   end
 
   def identicon
