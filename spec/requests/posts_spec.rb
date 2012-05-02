@@ -10,10 +10,24 @@ describe "Posts" do
 
       visit posts_path
 
-      page.has_selector? "#post-#{first_post.id}"
-      page.has_selector? "#post-#{second_post.id}"
-      page.has_selector? "#post-#{third_post.id}"
-      page.has_selector? "#post-#{fourth_post.id}"
+      page.should have_selector "div#posts"
+      page.should have_selector "article#post-#{first_post.id}"
+      page.should have_selector "article#post-#{second_post.id}"
+      page.should have_selector "article#post-#{third_post.id}"
+      page.should have_selector "article#post-#{fourth_post.id}"
+    end
+
+    it "should load new posts when a post is submitted" do
+      visit posts_path
+
+      page.should_not have_selector "article.post"
+
+      fill_in "post_subject", :with => "<p>This is a test</p>"
+      fill_in "post_body", :with => "<p>This is also a <br /> test.</p>"
+      click_button "Post"
+
+      page.should have_selector "article.post"
+      page.should have_content "This is also a test."
     end
   end
 end

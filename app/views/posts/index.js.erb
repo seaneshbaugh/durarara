@@ -1,6 +1,6 @@
 <% if @new_posts.length > 0 %>
 	var newPosts = document.createElement("div");
-	newPosts.innerHTML = "<%= @new_posts.collect { |post| render("post", :post => post) }.join.gsub(/\n/, "") %>";
+	newPosts.innerHTML = "<%= escape_javascript (@new_posts.collect { |post| render("post", :post => post) }.join.gsub(/\n/, "")) %>";
 	$("#posts").prepend($(newPosts.innerText || newPosts.text || newPosts.textContent).hide().fadeIn(1000));
 	$("#latest_post_id").val("<%= @new_posts.first.id %>");
 	<% if controller.action_name == "create" %>
